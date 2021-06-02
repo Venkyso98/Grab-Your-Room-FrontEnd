@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Navbar from "../Navbar/Navbar";
-import DisplayAllRoom from "./DisplayAllRoom";
+import DisplayAllRooms from "./DisplayAllRooms";
 
 function AllRooms() {
   const queryString = new URLSearchParams(useLocation().search);
@@ -25,19 +25,7 @@ function AllRooms() {
   return (
     <div>
       <Navbar />
-      {/* <GridList cols={3} spacing={24}> */}
-      {/* {response.map((fetchRooms) => (
-        // console.log("fetchRooms:", fetchRooms),
-        // <Grid container spacing={2}>
-        //   <Grid item lg={3}>
-        // <GridListTile style={{height:"380px"}}>
-        <DisplayAllRoom key={fetchRooms._id} displayFetchRooms={fetchRooms} />
-        // </GridListTile>
-        //   </Grid>
-        // </Grid>
-      ))} */}
-      {/* </GridList> */}
-      <DisplayAllRoom displayFetchRooms={response} />
+      <DisplayAllRooms displayFetchRooms={response} />
     </div>
   );
 }
