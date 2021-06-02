@@ -28,14 +28,17 @@ function Home() {
         <p>Luxury</p>
         <p>Hotels & Resort</p>
         {/* <div className={classes.bookNow}>Book Now</div> */}
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.bookNow}
-          endIcon={<ArrowRightAltIcon></ArrowRightAltIcon>}
-        >
-          Book Now
-        </Button>
+
+        <Link to="/search" className={classes.bookNowContent}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.bookNow}
+            endIcon={<ArrowRightAltIcon></ArrowRightAltIcon>}
+          >
+            Book Now
+          </Button>
+        </Link>
       </Box>
     </nav>
   );
