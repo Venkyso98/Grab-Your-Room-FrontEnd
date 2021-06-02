@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
-  navHome: {
+  navLinks: {
     textDecoration: "none",
     color:"white"
   },

@@ -40,9 +40,15 @@ function Navbar() {
 
           <Hidden mdDown>
             <div className={classes.appBarContent}>
-              <Link to="/" className={classes.navHome}>Home</Link>
+              <Link to="/" className={classes.navLinks}>
+                Home
+              </Link>
             </div>
-            <div className={classes.appBarContent}>About Us</div>
+            <div className={classes.appBarContent}>
+              <Link to="/about" className={classes.navLinks}>
+                About Us
+              </Link>
+            </div>
             <div className={classes.appBarContent}>Contact Us</div>
           </Hidden>
         </Toolbar>
