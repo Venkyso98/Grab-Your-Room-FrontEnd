@@ -11,6 +11,8 @@ import { useStyles } from "./SearchRoom.style";
 import InputControl from "../Controls/InputControl";
 import DatePickerControl from "../Controls/DatePickerControl";
 import axios from "axios";
+import { Link, Route, withRouter } from "react-router-dom";
+import About from "../About";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -24,10 +26,11 @@ const initialValues = {
   checkOut: new Date(),
 };
 
-function SearchRoom() {
+function SearchRoom(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [values, setValues] = useState(initialValues);
+  // const [formResponse, setFormResponse] = useState("");
 
   // opens when the component is rendered
   useEffect(() => {
@@ -46,47 +49,58 @@ function SearchRoom() {
       [name]: value,
     });
   };
-  let finalDate;
-  const handleSubmit = async (event) => {
+
+  // Submit function
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log("In handle Submit");
-    console.log("Dates:",values.checkIn);
 
-    let getNewDate = new Date(values.checkIn);
-    console.log("Getnedate:",getNewDate);
-    finalDate = getNewDate.getFullYear() + '-' +  (getNewDate.getMonth() + 1)  + '-' +  getNewDate.getDate(); 
-    console.log("finalDate:",typeof finalDate);
-    console.log("finalDate:",finalDate);
-    // let checkInData = JSON.stringify(values.checkIn);
-    // console.log("CheckInDatq:", checkInData);
-    // let newDate  = new Date(values.checkIn);
-    // console.log("NEw Date:",newDate);
-    // debugger;
+    let manipulateCheckInDate = new Date(values.checkIn);
+    let finalCheckInDate =
+      manipulateCheckInDate.getFullYear() +
+      "-" +
+      (manipulateCheckInDate.getMonth() + 1) +
+      "-" +
+      manipulateCheckInDate.getDate();
 
     // user post
-    // await axios.post("http://localhost:5000/user/registeruser", {
-    //   firstName: values.firstName,
-    //   lastName: values.lastName,
-    //   email: values.email,
-    // });
-
-    // console.log("Vlaues checkin:", typeof(values.checkIn));
-    // debugger;
+    axios
+      .post("http://localhost:5000/user/registeruser", {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+      })
+      .then((response) => {
+        console.log("Response Post:", response);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
 
     // get call for getAllRooms
-    await axios.get(`http://localhost:5000/rooms/getAllRooms/${finalDate}`)
-      .then((response) => {
-        console.log("Response:", response);
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      });
+    // axios
+    //   .get(`http://localhost:5000/rooms/getAllRooms/${finalCheckInDate}`)
+    //   .then((response) => {
+    //     console.log("Response Get:", response);
+    //     // setFormResponse([...response.data]);
+    //     props.onClickData(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error:", err);
+    //   });
+
+    props.history.push(`/about/${finalCheckInDate}`);
+    // onClickData(formResponse);
+    // // Route
+    // <Route path="/about" component={About} />;
   };
 
-  console.log("Vlaues:", values);
+  // console.log("Form Resposne:", formResponse);
+  // debugger
+
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar /> {/* Centralised Navbar */}
       <div className={classes.searchBackground}>
         <div>
           <Dialog
@@ -142,11 +156,14 @@ function SearchRoom() {
                   onChange={handleInputChange}
                 />
                 <DialogActions>
+                  {/* <Link to="/about"> */}
                   <Button type="submit" variant="contained" color="primary">
                     Search
                   </Button>
+                  {/* </Link> */}
                 </DialogActions>
               </form>
+              {/* <button onClick={onClickData}>Demo</button> */}
             </DialogContent>
           </Dialog>
         </div>
@@ -155,4 +172,5 @@ function SearchRoom() {
   );
 }
 
-export default SearchRoom;
+// withRouter as if we want to pass the data to another page after the completion of some specific function
+export default withRouter(SearchRoom);
