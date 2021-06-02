@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
       marginLeft: theme.spacing(5),
       letterSpacing: theme.spacing(0.5),
-	  fontFamily: font
+      fontFamily: font,
     },
     "& a:hover": {
       color: "#89cff0",
@@ -35,11 +35,11 @@ export const useStyles = makeStyles((theme) => ({
     "& a": {
       //   color: "#89cff0",
       color: "white",
-    //   fontWeight: "200",
+      //   fontWeight: "200",
       textDecoration: "none",
       textAlign: "center",
       fontSize: "1.5rem",
-        fontFamily: font,
+      fontFamily: font,
     },
   },
   rightPane: {
@@ -49,7 +49,7 @@ export const useStyles = makeStyles((theme) => ({
       textDecoration: "none",
       marginRight: theme.spacing(5),
       letterSpacing: theme.spacing(0.5),
-	  fontFamily: font
+      fontFamily: font,
     },
     "& a:hover": {
       color: "#89cff0",
@@ -69,13 +69,18 @@ export const useStyles = makeStyles((theme) => ({
   },
   bookNow: {
     // marginLeft: "37rem",
-	marginTop:"-2%",
+    marginTop: "-2%",
     borderRadius: "3px",
     backgroundColor: "#4169e1",
+    // textDecoration:"none",
     // width: "8%",
     // height: "5vh",
     // padding: "0.8% 0 0 1.8%",
     // textTransform: "uppercase",
     cursor: "pointer",
+  },
+  bookNowContent: {
+    textDecoration: "none",
+    color: "white",
   },
 }));
