@@ -6,7 +6,7 @@ import InputControl from "../Controls/InputControl";
 import DatePickerControl from "../Controls/DatePickerControl";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Paper } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
 
 const initialValues = {
   firstName: "",
@@ -75,6 +75,9 @@ function SearchRoom(props) {
       <Navbar /> {/* Centralised Navbar */}
       <div className={`${classes.searchBackground} ${classes.paper}`}>
         <Paper elevation={3}>
+          <Typography variant="h5" style={{ textAlign: "center" }}>
+            Search Room
+          </Typography>
           <form onSubmit={handleSubmit}>
             <InputControl
               label="First Name"
