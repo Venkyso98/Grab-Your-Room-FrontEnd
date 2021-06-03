@@ -10,7 +10,7 @@ function App() {
     <div>
       <Switch>
         <Route path="/" component={Home} exact />
-        <Route path="/search" component={SearchRoom} exact />
+        <Route path="/search-room" component={SearchRoom} exact />
 
         {/* custom props in route */}
         {/* <Route path="/search" render={(props) => (<SearchRoom onClickData={handleOnClick} {...props} />)} exact /> */}
