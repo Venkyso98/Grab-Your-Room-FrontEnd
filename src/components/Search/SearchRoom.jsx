@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Button from "@material-ui/core/Button";
 import { useStyles } from "./SearchRoom.style";
@@ -18,29 +18,37 @@ const initialValues = {
 
 function SearchRoom(props) {
   const classes = useStyles();
-  const [values, setValues] = useState(initialValues);
-  // let dummyArr = [];
+  const [response, setResponse] = useState(initialValues);
+  const [email, setEmail] = useState("");
+  const getDataofUser = JSON.parse(localStorage.getItem("userId"));
 
-  // opens when the component is rendered
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/user/registeruser")
-  // }, []);
+  // for fetching the user on every render i.e to persists the user data on form
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/user/getSingleUser/${getDataofUser}`)
+      .then((response) => {
+        console.log("Response Get in Search ROmms:", response);
+        setResponse(response.data);
+        setEmail(response.data.email);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  }, []);
 
   // Input Change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setValues({
-      ...values,
+    setResponse((inputs) => ({
+      ...inputs,
       [name]: value,
-    });
+    }));
   };
 
   // Submit function
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("In handle Submit");
-
-    let parseIntoDateFormat = new Date(values.checkIn);
+    let parseIntoDateFormat = new Date(response.checkIn);
     let finalCheckInDate =
       parseIntoDateFormat.getFullYear() +
       "-" +
@@ -48,26 +56,48 @@ function SearchRoom(props) {
       "-" +
       parseIntoDateFormat.getDate();
 
-    // user post
-    axios
-      .post("http://localhost:5000/user/registeruser", {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-      })
-      .then((response) => {
-        console.log("Response Post:", response);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
+    let userDetails = {
+      firstName: response.firstName,
+      lastName: response.lastName,
+      email: response.email,
+      checkIn: response.checkIn,
+      checkOut: response.checkOut,
+    };
 
-    // dummyArr = [...dummyArr, values.firstName, values.lastName, values.email];
-    // console.log("DummyArr:", dummyArr);
-    // localStorage.setItem("");
+    const pushCheckInData = () => {
+      props.history.push(`/allRooms?checkIn=${finalCheckInDate}`);
+    };
 
-    // send the checkIn date to other page as queryString
-    props.history.push(`/allrooms?checkIn=${finalCheckInDate}`);
+    // user put request i.e if user already exists
+    if (response.email == email) {
+      console.log("In put request");
+      axios
+        .put(
+          `http://localhost:5000/user/updateUserDetails/${getDataofUser}`,
+          userDetails
+        )
+        .then((response) => {
+          console.log("User updated details", response.data);
+          pushCheckInData();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      // user post
+      axios
+        .post("http://localhost:5000/user/registeruser", userDetails)
+        .then((response) => {
+          console.log("Response Post:", response);
+          localStorage.setItem("userId", JSON.stringify(response.data._id));
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+
+      // send the checkIn date to other page as queryString
+      pushCheckInData();
+    }
   };
 
   return (
@@ -85,7 +115,7 @@ function SearchRoom(props) {
               id="outlined-basic"
               name="firstName"
               onChange={handleInputChange}
-              value={values.firstName}
+              value={response.firstName}
             />
             <InputControl
               label="Last Name"
@@ -93,7 +123,7 @@ function SearchRoom(props) {
               id="outlined-basic"
               name="lastName"
               onChange={handleInputChange}
-              value={values.lastName}
+              value={response.lastName}
             />
             <InputControl
               label="Email"
@@ -101,18 +131,18 @@ function SearchRoom(props) {
               id="outlined-basic"
               name="email"
               onChange={handleInputChange}
-              value={values.email}
+              value={response.email}
             />
             <DatePickerControl
               name="checkIn"
               label="Check In"
-              value={values.checkIn}
+              value={response.checkIn}
               onChange={handleInputChange}
             />
             <DatePickerControl
               name="checkOut"
               label="Check Out"
-              value={values.checkOut}
+              value={response.checkOut}
               onChange={handleInputChange}
             />
 
