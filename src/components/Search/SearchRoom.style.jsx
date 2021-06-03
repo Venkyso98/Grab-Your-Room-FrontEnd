@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${Image})`,
     backgroundSize: "100% 100%",
     width: "100vw",
-    height: "89.8vh",
+    height: "89.7vh",
     // display: "flex",
     // flexWrap: "wrap",
     // "& > *": {

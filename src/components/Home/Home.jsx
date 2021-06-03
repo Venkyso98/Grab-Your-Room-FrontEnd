@@ -11,7 +11,7 @@ function Home() {
       <div className={classes.mainContent}>
         <div className={classes.leftPane}>
           <Link to="/">Home</Link>
-          <Link to="/search">Rooms</Link>
+          <Link to="/search-room">Rooms</Link>
           <a>Amenities</a>
         </div>
         <div className={classes.logoDiv}>
@@ -29,7 +29,7 @@ function Home() {
         <p>Hotels & Resort</p>
         {/* <div className={classes.bookNow}>Book Now</div> */}
 
-        <Link to="/search" className={classes.bookNowContent}>
+        <Link to="/search-room" className={classes.bookNowContent}>
           <Button
             variant="contained"
             color="primary"

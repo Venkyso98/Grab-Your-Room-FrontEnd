@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -14,6 +14,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const removeId = () => {
+    localStorage.removeItem("userData");
+  };
 
   const handleDrawerToggle = () => {
     setOpenDrawer(!openDrawer);
@@ -40,7 +44,7 @@ function Navbar() {
 
           <Hidden mdDown>
             <div className={classes.appBarContent}>
-              <Link to="/" className={classes.navLinks}>
+              <Link to="/" className={classes.navLinks} onClick={removeId}>
                 Home
               </Link>
             </div>
