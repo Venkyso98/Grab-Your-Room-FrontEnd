@@ -16,7 +16,7 @@ function Navbar() {
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const removeId = () => {
-    localStorage.removeItem("userData");
+    localStorage.removeItem("userId");
   };
 
   const handleDrawerToggle = () => {
@@ -43,8 +43,8 @@ function Navbar() {
           </Typography>
 
           <Hidden mdDown>
-            <div className={classes.appBarContent}>
-              <Link to="/" className={classes.navLinks} onClick={removeId}>
+            <div className={classes.appBarContent} onClick={removeId}>
+              <Link to="/" className={classes.navLinks}>
                 Home
               </Link>
             </div>
