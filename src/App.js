@@ -4,6 +4,7 @@ import SearchRoom from "./components/Search/SearchRoom";
 import About from "./components/About.jsx";
 import { Route, Switch } from "react-router";
 import AllRooms from "./components/AllRooms/AllRooms";
+import RoomDetails from "./components/RoomDetails/RoomDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         {/* <Route path="/about" render={(props) => (<About onClickResponseData={data} {...props} />)} exact /> */}
         <Route path="/allrooms" component={AllRooms} exact />
         <Route path="/about" component={About} exact />
+        <Route path="/room-details/:id" component={RoomDetails}></Route>
       </Switch>
     </div>
   );
