@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import Image from "../../assets/images/bannerImage.jpg";
-// import Image from "../assets/images/banneroom.jpg";
+// import Image from "../../assets/images/banneroom.jpg";
 const font = "Play, sans-serif";
 
 export const useStyles = makeStyles((theme) => ({
@@ -33,9 +33,7 @@ export const useStyles = makeStyles((theme) => ({
   logoDiv: {
     marginTop: "2%",
     "& a": {
-      //   color: "#89cff0",
       color: "white",
-      //   fontWeight: "200",
       textDecoration: "none",
       textAlign: "center",
       fontSize: "1.5rem",
