@@ -6,7 +6,8 @@ import InputControl from "../Controls/InputControl";
 import DatePickerControl from "../Controls/DatePickerControl";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Paper, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
+import { getSingleUserData } from "../../Services/UserAxios";
 
 const initialValues = {
   firstName: "",
@@ -24,16 +25,16 @@ function SearchRoom(props) {
 
   // for fetching the user on every render i.e to persists the user data on form
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/user/getSingleUser/${getDataofUser}`)
-      .then((response) => {
+    (async () => {
+      try {
+        const response = await getSingleUserData(getDataofUser);
         console.log("Response Get in Search ROmms:", response);
         setResponse(response.data);
         setEmail(response.data.email);
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      });
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    })();
   }, []);
 
   // Input Change
@@ -48,6 +49,7 @@ function SearchRoom(props) {
   // Submit function
   const handleSubmit = (event) => {
     event.preventDefault();
+    // props.onClickData(response.checkIn, response.checkOut);
     let parseIntoDateFormat = new Date(response.checkIn);
     let finalCheckInDate =
       parseIntoDateFormat.getFullYear() +
@@ -65,7 +67,7 @@ function SearchRoom(props) {
     };
 
     const pushCheckInData = () => {
-      props.history.push(`/allRooms?checkIn=${finalCheckInDate}`);
+      props.history.push(`/rooms-listing?checkIn=${finalCheckInDate}`);
     };
 
     // user put request i.e if user already exists
@@ -100,63 +102,69 @@ function SearchRoom(props) {
     }
   };
 
+  console.log("Responses:", response);
+
   return (
     <React.Fragment>
       <Navbar /> {/* Centralised Navbar */}
-      <div className={`${classes.searchBackground} ${classes.paper}`}>
-        <Paper elevation={3}>
-          <Typography variant="h5" className={classes.searchText}>
-            Search Room
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <InputControl
-              label="First Name"
-              variant="outlined"
-              id="outlined-basic"
-              name="firstName"
-              onChange={handleInputChange}
-              value={response.firstName}
-            />
-            <InputControl
-              label="Last Name"
-              variant="outlined"
-              id="outlined-basic"
-              name="lastName"
-              onChange={handleInputChange}
-              value={response.lastName}
-            />
-            <InputControl
-              label="Email"
-              variant="outlined"
-              id="outlined-basic"
-              name="email"
-              onChange={handleInputChange}
-              value={response.email}
-            />
-            <DatePickerControl
-              name="checkIn"
-              label="Check In"
-              value={response.checkIn}
-              onChange={handleInputChange}
-            />
-            <DatePickerControl
-              name="checkOut"
-              label="Check Out"
-              value={response.checkOut}
-              onChange={handleInputChange}
-            />
+      <Grid>
+        <div className={`${classes.searchBackground} ${classes.paper}`}>
+          <Paper elevation={3}>
+            <Typography variant="h5" className={classes.searchText}>
+              Search Room
+            </Typography>
+            <Grid item sm={12} md={12} lg={12}>
+              <form onSubmit={handleSubmit}>
+                <InputControl
+                  label="First Name"
+                  variant="outlined"
+                  id="outlined-basic"
+                  name="firstName"
+                  onChange={handleInputChange}
+                  value={response.firstName}
+                />
+                <InputControl
+                  label="Last Name"
+                  variant="outlined"
+                  id="outlined-basic"
+                  name="lastName"
+                  onChange={handleInputChange}
+                  value={response.lastName}
+                />
+                <InputControl
+                  label="Email"
+                  variant="outlined"
+                  id="outlined-basic"
+                  name="email"
+                  onChange={handleInputChange}
+                  value={response.email}
+                />
+                <DatePickerControl
+                  name="checkIn"
+                  label="Check In"
+                  value={response.checkIn}
+                  onChange={handleInputChange}
+                />
+                <DatePickerControl
+                  name="checkOut"
+                  label="Check Out"
+                  value={response.checkOut}
+                  onChange={handleInputChange}
+                />
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.searchButton}
-            >
-              Search
-            </Button>
-          </form>
-        </Paper>
-      </div>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.searchButton}
+                >
+                  Search
+                </Button>
+              </form>
+            </Grid>
+          </Paper>
+        </div>
+      </Grid>
     </React.Fragment>
   );
 }
