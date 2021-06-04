@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+const font = "Play, sans-serif";
 
 export const drawerWidth = 340;
 export const useStyles = makeStyles((theme) => ({
@@ -7,19 +8,22 @@ export const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    fontFamily:font
   },
   appBar: {
     backgroundColor: "#6495ed",
   },
   appBarContent: {
     marginRight: theme.spacing(1.5),
+    fontFamily:font,
     "&:hover": {
       cursor: "pointer",
     },
   },
   navLinks: {
     textDecoration: "none",
-    color:"white"
+    color:"white",
+    fontFamily:font
   },
   drawerPaper: {
     width: drawerWidth,

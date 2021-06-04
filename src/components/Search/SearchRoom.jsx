@@ -105,7 +105,7 @@ function SearchRoom(props) {
       <Navbar /> {/* Centralised Navbar */}
       <div className={`${classes.searchBackground} ${classes.paper}`}>
         <Paper elevation={3}>
-          <Typography variant="h5" style={{ textAlign: "center" }}>
+          <Typography variant="h5" className={classes.searchText}>
             Search Room
           </Typography>
           <form onSubmit={handleSubmit}>

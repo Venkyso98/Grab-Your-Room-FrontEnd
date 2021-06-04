@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import Image from "../../assets/images/bannerImage.jpg";
 // import Image from "../assets/images/banneroom.jpg";
-const font = "'Cormorant Garamond', serif";
+const font = "Play, sans-serif";
 
 export const useStyles = makeStyles((theme) => ({
   navBar: {
@@ -72,12 +72,8 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "-2%",
     borderRadius: "3px",
     backgroundColor: "#4169e1",
-    // textDecoration:"none",
-    // width: "8%",
-    // height: "5vh",
-    // padding: "0.8% 0 0 1.8%",
-    // textTransform: "uppercase",
     cursor: "pointer",
+    fontFamily: font,
   },
   bookNowContent: {
     textDecoration: "none",
