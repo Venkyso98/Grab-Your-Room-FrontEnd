@@ -7,7 +7,7 @@ import DatePickerControl from "../Controls/DatePickerControl";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Grid, Paper, Typography } from "@material-ui/core";
-import { getSingleUserData } from "../../Services/UserAxios";
+import { getSingleUserData } from "../../Services/useAxios";
 
 const initialValues = {
   firstName: "",

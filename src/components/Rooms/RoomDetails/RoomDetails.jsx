@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getSingleUserData } from "../../../Services/UserAxios";
+import { getSingleUserData } from "../../../Services/useAxios";
 import Navbar from "../../Navbar/Navbar";
 
 function RoomDetails(props) {
