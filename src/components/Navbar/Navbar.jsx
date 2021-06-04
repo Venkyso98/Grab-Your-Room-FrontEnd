@@ -15,7 +15,7 @@ function Navbar() {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const removeId = () => {
+  const handleRemoveId = () => {
     localStorage.removeItem("userId");
   };
 
@@ -43,7 +43,7 @@ function Navbar() {
           </Typography>
 
           <Hidden mdDown>
-            <div className={classes.appBarContent} onClick={removeId}>
+            <div className={classes.appBarContent} onClick={handleRemoveId}>
               <Link to="/" className={classes.navLinks}>
                 Home
               </Link>
@@ -78,9 +78,30 @@ function Navbar() {
           <CloseIcon />
         </IconButton>
         <Box className={classes.links}>
-          <div className={classes.navbarDrawerLinks}>Home</div>
-          <div className={classes.navbarDrawerLinks}>About Us</div>
-          <div className={classes.navbarDrawerLinks}>Contact Us</div>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to="/"
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              Home
+            </Link>
+          </div>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to="/about"
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              About Us
+            </Link>
+          </div>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to=""
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              Contact Us
+            </Link>
+          </div>
         </Box>
       </Drawer>
     </div>
