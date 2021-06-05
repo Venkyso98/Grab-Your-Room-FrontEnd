@@ -29,5 +29,5 @@ export const useStyles = makeStyles((theme) => ({
     float: "right",
     textTransform: "capitalize",
     fontFamily: font,
-  },
+  }
 }));

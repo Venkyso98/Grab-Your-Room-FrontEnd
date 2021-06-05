@@ -31,6 +31,17 @@ export const useStyles = makeStyles((theme) => ({
     right: 0,
     textAlign: "right",
   },
+  backToSearchDiv: {
+    textAlign: "center",
+    width: "100% ",
+    marginTop:"1px"
+  },
+  backToSearch: {
+    position: "static",
+    boxShadow: "none",
+    borderRadius: "2px",
+    fontFamily: "Play, sans-serif",
+  },
   roomTitle: {
     fontFamily: "Lora, serif",
   },
@@ -39,7 +50,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   roomTitleContent: {
     textAlign: "center",
-    margin: "2rem 0 -3.5rem 0",
+    margin: "3rem 0 -3.5rem 0",
     fontFamily: "Lora, serif",
     fontSize: "30px",
   },
