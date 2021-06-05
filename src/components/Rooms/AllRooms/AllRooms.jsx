@@ -1,7 +1,4 @@
-import {
-  Container,
-  Typography,
-} from "@material-ui/core";
+import { Button, Container, Link, Typography } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
@@ -9,7 +6,7 @@ import Navbar from "../../Navbar/Navbar";
 import { useStyles } from "./AllRooms.style";
 import DisplayAllRooms from "./DisplayAllRooms";
 
-function AllRooms() {
+function AllRooms(props) {
   const queryString = new URLSearchParams(useLocation().search);
   const queryStringValue = queryString.get("checkIn");
   const [response, setResponse] = useState([]);
@@ -27,6 +24,10 @@ function AllRooms() {
       });
   }, []);
 
+  const backToSearchForm = () => {
+    props.history.push("/search-room");
+  };
+
   return (
     <div>
       <Navbar />
@@ -41,9 +42,21 @@ function AllRooms() {
               Stay that Suits You
             </Typography>
           </div>
+
+          <div className={classes.backToSearchDiv}>
+            <Button
+              className={classes.backToSearch}
+              variant="contained"
+              color="primary"
+              onClick={backToSearchForm}
+            >
+              Back To Search Form
+            </Button>
+          </div>
         </div>
         <div className={classes.roomTitleContent}>Our Rooms</div>
       </Container>
+
       {/* displays all the rooms here  */}
       <DisplayAllRooms displayFetchRooms={response} />
     </div>
