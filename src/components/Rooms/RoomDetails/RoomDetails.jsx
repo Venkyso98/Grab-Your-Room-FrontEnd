@@ -76,7 +76,7 @@ function RoomDetails(props) {
     "-" +
     parseIntoDateFormat.getDate();
 
-  const backToRooms = () => {
+  const handleBackToRooms = () => {
     props.history.push(`/rooms-listing?checkIn=${finalCheckInDate}`);
   };
 
@@ -91,7 +91,7 @@ function RoomDetails(props) {
                 className={classes.backToRooms}
                 variant="contained"
                 color="primary"
-                onClick={backToRooms}
+                onClick={handleBackToRooms}
               >
                 Back To Rooms
               </Button>

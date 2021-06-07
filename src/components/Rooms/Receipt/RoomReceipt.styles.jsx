@@ -13,12 +13,17 @@ export const useStyles = makeStyles((theme) => ({
   paper: {
     display: "flex",
     justifyContent: "center",
-    "& > *": {
-      margin: theme.spacing(3),
-      padding: theme.spacing(5),
-      width: theme.spacing(50),
-      height: theme.spacing(50),
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
     },
+  },
+  paperContent: {
+    padding: theme.spacing(5),
+    marginTop: theme.spacing(5),
+    marginBottom: "5%",
   },
   roomCategory: {
     fontFamily: font,
@@ -27,7 +32,7 @@ export const useStyles = makeStyles((theme) => ({
   userDetails: {
     fontFamily: font,
     fontSize: "2rem",
-	marginBottom:"-0.2rem"
+    marginBottom: "-0.2rem",
   },
   roomDetails: {
     fontFamily: font,
@@ -35,8 +40,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   checkInDetails: {
     fontFamily: font,
-	textAlign:"center",
-	marginTop:"2rem",
-	fontSize:"2rem"
+    textAlign: "center",
+    marginTop: "2rem",
+    fontSize: "2rem",
   },
 }));

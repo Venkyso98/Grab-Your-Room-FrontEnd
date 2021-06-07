@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   roomDetailsBannerContainer: {
+    position: "relative",
     width: "100%",
     height: "30rem",
     marginTop: "1px",
@@ -17,11 +18,11 @@ export const useStyles = makeStyles((theme) => ({
     position: "absolute",
     textAlign: "center",
     width: "95% ",
-    bottom: "20%",
+    marginLeft: "2rem",
+    bottom: "10%",
     [theme.breakpoints.down("md")]: {
-      position: "absolute",
-      bottom: "20%",
-      left:"1%"
+      bottom: "10%",
+      marginLeft: "auto",
     },
   },
   backToRooms: {
@@ -68,12 +69,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   extraFacilities: {
     marginBottom: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      flexDirection: "column",
+    },
   },
   itemName: {
-    // paddingLeft: "1rem",
     padding: "0.6rem",
     fontFamily: "Play, sans-serif",
+    width:"auto",
     "&:hover": {
+      border:"1px solid #6ca0dc",
       borderRadius: "25px",
       color: "white",
       cursor: "pointer",

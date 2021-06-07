@@ -27,7 +27,7 @@ function RoomReceipt(props) {
       <Container>
         <Grid>
           <div className={classes.paper}>
-            <Paper elevation={1} style={{backgroundColor:"rgba(248,244,255,0.5)"}}>
+            <Paper className={classes.paperContent} elevation={1} style={{backgroundColor:"rgba(248,244,255,0.5)"}}>
               <Typography
                 variant="h5"
                 className={`${classes.userText} ${classes.userTextStyle}`}

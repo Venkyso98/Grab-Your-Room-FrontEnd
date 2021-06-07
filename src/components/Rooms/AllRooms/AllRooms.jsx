@@ -9,6 +9,7 @@ import DisplayAllRooms from "./DisplayAllRooms";
 function AllRooms(props) {
   const queryString = new URLSearchParams(useLocation().search);
   const queryStringValue = queryString.get("checkIn");
+  console.log("queryStringValue:",typeof(queryStringValue));
   const [response, setResponse] = useState([]);
   const classes = useStyles();
 
