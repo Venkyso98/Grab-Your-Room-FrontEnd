@@ -7,27 +7,30 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontFamily: font,
   },
-  paper: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(3),
-      padding: theme.spacing(5),
-      width: theme.spacing(50),
-      height: theme.spacing(50),
-    },
-    justifyContent: "center",
-  },
   searchBackground: {
+    position: "absolute",
     backgroundImage: `url(${Image})`,
     backgroundSize: "100% 100%",
-    width: "100vw",
-    height: "89.7vh",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  paperContent: {
+    position: "absolute",
+    height: "auto",
+    padding: "2.5%",
+    maxWidth: "100%",
+    top: "5%",
+    [theme.breakpoints.down("xs")]: {
+      padding: "6%",
+    },
   },
   searchButton: {
     marginTop: "1rem",
     float: "right",
     textTransform: "capitalize",
     fontFamily: font,
-  }
+  },
 }));

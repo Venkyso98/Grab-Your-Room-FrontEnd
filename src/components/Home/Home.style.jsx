@@ -2,19 +2,52 @@ import { makeStyles } from "@material-ui/core";
 import Image from "../../assets/images/bannerImage.jpg";
 // import Image from "../../assets/images/banneroom.jpg";
 const font = "Play, sans-serif";
+const drawerWidth = 250;
 
 export const useStyles = makeStyles((theme) => ({
-  navBar: {
+  homeImage: {
     backgroundImage: `url(${Image})`,
     backgroundSize: "100% 100%",
-    width: "100vw",
+    width: "100%",
     height: "100vh",
+    position: "relative",
+  },
+  menuIcon: {
+    [theme.breakpoints.down("md")]: {
+      color: "white",
+      marginLeft: "2%",
+      cursor: "pointer",
+    },
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  closeMenuButton: {
+    marginRight: "auto",
+    marginLeft: 0,
   },
   mainContent: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     textTransform: "uppercase",
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "flex-start",
+      alignItems: "center",
+    },
+  },
+  mainDrawerContent: {
+    [theme.breakpoints.down("lg")]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      lineHeight: "2rem",
+    },
+  },
+  navLinks: {
+    textDecoration: "none",
+    color: "black",
+    fontFamily:font
   },
   leftPane: {
     marginTop: "2%",
@@ -39,6 +72,9 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "1.5rem",
       fontFamily: font,
     },
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "2%",
+    },
   },
   rightPane: {
     marginTop: "2%",
@@ -55,19 +91,23 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   BoxContent: {
+    position: "relative",
+    maxWidth: "20%",
     textAlign: "center",
-    marginTop: "25%",
+    marginTop: "-15rem",
     color: "white",
-    textTransform: "uppercase",
-    "& p": {
-      fontFamily: font,
-      fontSize: "4rem",
-      lineHeight: "20px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%",
     },
+  },
+  boxContentText: {
+    fontFamily: font,
   },
   bookNow: {
     // marginLeft: "37rem",
-    marginTop: "-2%",
+    marginTop: "2%",
     borderRadius: "3px",
     backgroundColor: "#4169e1",
     cursor: "pointer",

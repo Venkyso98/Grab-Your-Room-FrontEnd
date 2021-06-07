@@ -30,11 +30,14 @@ export const useStyles = makeStyles((theme) => ({
     top: "5vh",
     right: 0,
     textAlign: "right",
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+    },
   },
   backToSearchDiv: {
     textAlign: "center",
     width: "100% ",
-    marginTop:"1px"
+    marginTop: "1px",
   },
   backToSearch: {
     position: "static",

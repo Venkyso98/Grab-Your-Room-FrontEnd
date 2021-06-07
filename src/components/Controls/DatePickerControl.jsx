@@ -19,22 +19,6 @@ function DatePickerControl({ label, name, onChange, value }) {
   return (
     <div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        {/* <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="yyyy-MM-dd"
-          margin="normal"
-          id="date-picker-inline"
-          label={label}
-          name={name}
-          value={value}
-          onChange={(date) => onChange(onHandleDatePickerChange(name, date))}
-          KeyboardButtonProps={{
-            "aria-label": "change date",
-          }}
-          className={classes.datePicker}
-        /> */}
-
         <KeyboardDatePicker
           margin="normal"
           id="date-picker-dialog"

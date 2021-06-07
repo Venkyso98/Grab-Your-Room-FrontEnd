@@ -6,7 +6,7 @@ import InputControl from "../Controls/InputControl";
 import DatePickerControl from "../Controls/DatePickerControl";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Box, Grid, Paper, Typography } from "@material-ui/core";
 import { getSingleUserData } from "../../Services/useAxios";
 
 const initialValues = {
@@ -108,60 +108,57 @@ function SearchRoom(props) {
     <React.Fragment>
       <Navbar /> {/* Centralised Navbar */}
       <Grid>
-        <div className={`${classes.searchBackground} ${classes.paper}`}>
-          <Paper elevation={3}>
+        <div className={classes.searchBackground}>
+          <Paper elevation={3} className={classes.paperContent}>
             <Typography variant="h5" className={classes.searchText}>
               Search Room
             </Typography>
-            <Grid item sm={12} md={12} lg={12}>
-              <form onSubmit={handleSubmit}>
-                <InputControl
-                  label="First Name"
-                  variant="outlined"
-                  id="outlined-basic"
-                  name="firstName"
-                  onChange={handleInputChange}
-                  value={response.firstName}
-                />
-                <InputControl
-                  label="Last Name"
-                  variant="outlined"
-                  id="outlined-basic"
-                  name="lastName"
-                  onChange={handleInputChange}
-                  value={response.lastName}
-                />
-                <InputControl
-                  label="Email"
-                  variant="outlined"
-                  id="outlined-basic"
-                  name="email"
-                  onChange={handleInputChange}
-                  value={response.email}
-                />
-                <DatePickerControl
-                  name="checkIn"
-                  label="Check In"
-                  value={response.checkIn}
-                  onChange={handleInputChange}
-                />
-                <DatePickerControl
-                  name="checkOut"
-                  label="Check Out"
-                  value={response.checkOut}
-                  onChange={handleInputChange}
-                />
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  className={classes.searchButton}
-                >
-                  Search
-                </Button>
-              </form>
-            </Grid>
+            <form onSubmit={handleSubmit}>
+              <InputControl
+                label="First Name"
+                variant="outlined"
+                id="outlined-basic"
+                name="firstName"
+                onChange={handleInputChange}
+                value={response.firstName}
+              />
+              <InputControl
+                label="Last Name"
+                variant="outlined"
+                id="outlined-basic"
+                name="lastName"
+                onChange={handleInputChange}
+                value={response.lastName}
+              />
+              <InputControl
+                label="Email"
+                variant="outlined"
+                id="outlined-basic"
+                name="email"
+                onChange={handleInputChange}
+                value={response.email}
+              />
+              <DatePickerControl
+                name="checkIn"
+                label="Check In"
+                value={response.checkIn}
+                onChange={handleInputChange}
+              />
+              <DatePickerControl
+                name="checkOut"
+                label="Check Out"
+                value={response.checkOut}
+                onChange={handleInputChange}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.searchButton}
+              >
+                Search
+              </Button>
+            </form>
           </Paper>
         </div>
       </Grid>

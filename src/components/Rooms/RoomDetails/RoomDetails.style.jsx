@@ -14,26 +14,28 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   backToRoomsDiv: {
+    position: "absolute",
     textAlign: "center",
-    width: "100% ",
+    width: "95% ",
+    bottom: "20%",
+    [theme.breakpoints.down("md")]: {
+      position: "absolute",
+      bottom: "20%",
+      left:"1%"
+    },
   },
   backToRooms: {
-    position: "static",
     boxShadow: "none",
     borderRadius: "2px",
     fontFamily: "Play, sans-serif",
     marginTop: "28%",
   },
   roomCategory: {
-    // backgroundColor: "rgba(65,105,225,0.5)",
-    // height: "2rem",
     textAlign: "left",
-    // padding: "1.5rem 0 1rem 0",
     marginTop: "2.3rem",
     fontSize: "2.2rem",
     // backgroundColor:"rgba(100, 149, 237,0.5)",
     fontFamily: "Play, sans-serif",
-    // color:"white"
   },
   content: {
     marginTop: "0.8rem",
