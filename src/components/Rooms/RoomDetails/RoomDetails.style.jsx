@@ -7,7 +7,7 @@ export const useStyles = makeStyles((theme) => ({
     height: "30rem",
     marginTop: "1px",
   },
-  roomDetailsBanner: {
+  roomDetailsBannerImage: {
     backgroundImage:
       "url('https://www.theramblehotel.com/wp-content/uploads/2017/12/Ramble-King-Room-banner-2.jpg')",
     backgroundSize: "100% 100%",
@@ -30,6 +30,7 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "2px",
     fontFamily: "Play, sans-serif",
     marginTop: "28%",
+    backgroundColor: "#6495ED",
   },
   roomCategory: {
     textAlign: "left",
@@ -62,6 +63,7 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "2px",
     boxShadow: "none",
     fontFamily: "Play, sans-serif",
+    backgroundColor: "#6495ED",
   },
   extra: {
     fontFamily: "Play, sans-serif",
@@ -77,9 +79,9 @@ export const useStyles = makeStyles((theme) => ({
   itemName: {
     padding: "0.6rem",
     fontFamily: "Play, sans-serif",
-    width:"auto",
+    width: "auto",
     "&:hover": {
-      border:"1px solid #6ca0dc",
+      border: "1px solid #6ca0dc",
       borderRadius: "25px",
       color: "white",
       cursor: "pointer",

@@ -10,6 +10,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useStyles } from "./Navbar.style";
 import { Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
+// import inage from "../../assets/images/Logo.JPG"
 
 function Navbar() {
   const classes = useStyles();
@@ -38,6 +39,9 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
           </Hidden>
+          <Typography>
+            {/* <img src="../../assets/images/Logo.png" alt=""  /> */}
+          </Typography>
           <Typography variant="h6" className={classes.title}>
             GrabYourRoom
           </Typography>

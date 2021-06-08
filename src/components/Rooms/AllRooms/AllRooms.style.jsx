@@ -44,6 +44,7 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     borderRadius: "2px",
     fontFamily: "Play, sans-serif",
+    backgroundColor: "#6495ED",
   },
   roomTitle: {
     fontFamily: "Lora, serif",
