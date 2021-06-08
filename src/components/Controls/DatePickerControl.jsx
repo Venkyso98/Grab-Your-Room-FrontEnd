@@ -20,6 +20,7 @@ function DatePickerControl({ label, name, onChange, value }) {
     <div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
+          // disableScrollLock={true}
           margin="normal"
           id="date-picker-dialog"
           format="yyyy-MM-dd"

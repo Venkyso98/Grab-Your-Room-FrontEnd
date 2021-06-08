@@ -40,12 +40,14 @@ function Navbar() {
             </IconButton>
           </Hidden>
           <Typography variant="h6" className={classes.title}>
-            {/* <img
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              {/* <img
               src={process.env.PUBLIC_URL + "/Logo1.png"}
               style={{ width: "200px", height:"80px" }}
               alt=""
             /> */}
-            GrabYourRoom
+              GrabYourRoom
+            </Link>
           </Typography>
 
           <Hidden mdDown>
