@@ -39,10 +39,12 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography>
-            {/* <img src="../../assets/images/Logo.png" alt=""  /> */}
-          </Typography>
           <Typography variant="h6" className={classes.title}>
+            {/* <img
+              src={process.env.PUBLIC_URL + "/Logo1.png"}
+              style={{ width: "200px", height:"80px" }}
+              alt=""
+            /> */}
             GrabYourRoom
           </Typography>
 
@@ -63,51 +65,51 @@ function Navbar() {
       </AppBar>
 
       {/* Drawer */}
-        <Drawer
-          variant="temporary"
-          anchor={"left"}
-          open={openDrawer}
-          onClose={handleDrawerToggle}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+      <Drawer
+        variant="temporary"
+        anchor={"left"}
+        open={openDrawer}
+        onClose={handleDrawerToggle}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+      >
+        <IconButton
+          onClick={handleDrawerToggle}
+          className={classes.closeMenuButton}
         >
-          <IconButton
-            onClick={handleDrawerToggle}
-            className={classes.closeMenuButton}
-          >
-            <CloseIcon />
-          </IconButton>
-          <Box className={classes.links}>
-            <div className={classes.navbarDrawerLinks}>
-              <Link
-                to="/"
-                className={`${classes.navLinks} ${classes.drawerLinks}`}
-              >
-                Home
-              </Link>
-            </div>
-            <div className={classes.navbarDrawerLinks}>
-              <Link
-                to="/about"
-                className={`${classes.navLinks} ${classes.drawerLinks}`}
-              >
-                About Us
-              </Link>
-            </div>
-            <div className={classes.navbarDrawerLinks}>
-              <Link
-                to=""
-                className={`${classes.navLinks} ${classes.drawerLinks}`}
-              >
-                Contact Us
-              </Link>
-            </div>
-          </Box>
-        </Drawer>
+          <CloseIcon />
+        </IconButton>
+        <Box className={classes.links}>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to="/"
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              Home
+            </Link>
+          </div>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to="/about"
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              About Us
+            </Link>
+          </div>
+          <div className={classes.navbarDrawerLinks}>
+            <Link
+              to=""
+              className={`${classes.navLinks} ${classes.drawerLinks}`}
+            >
+              Contact Us
+            </Link>
+          </div>
+        </Box>
+      </Drawer>
     </div>
   );
 }

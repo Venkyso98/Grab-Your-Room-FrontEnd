@@ -8,51 +8,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Container, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: "5rem",
-  },
-  card: {
-    height: "16.5rem",
-    maxWidth: 300,
-
-    "& .hidden-button": {
-      display: "none",
-    },
-    "&:hover .hidden-button": {
-      position: "absolute",
-      display: "block",
-      // backgroundColor: "rgba(100,149,237,0.5)",
-      backgroundColor: "rgba(0,0,0,0.4)",
-      color: "white",
-      fontWeight: "600",
-      padding: "10px",
-      borderRadius: "5px",
-      margin: "-7rem 0 0 7rem",
-      fontFamily: "Play, sans-serif",
-    },
-    "&:hover .roomName": {
-      backgroundColor: "rgba(0,0,0,0.5)",
-      height:"100px",
-      color:"white"
-    },
-  },
-  roomPrice: {
-    textAlign: "center",
-    fontSize: "20px",
-    marginTop: "1rem",
-  },
-  roomCategory: {
-    textAlign: "center",
-    fontSize: "20px",
-    fontFamily: "Play, sans-serif",
-  },
-}));
+import { useStyles } from "./DisplayAllRooms.style";
 
 function DisplayAllRoom({ displayFetchRooms }) {
-  console.log("displayFetchRooms in display:", displayFetchRooms);
   const classes = useStyles();
+  console.log("displayFetchRooms in display:", displayFetchRooms);
 
   return (
     <div>
