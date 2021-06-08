@@ -27,17 +27,33 @@ function RoomReceipt(props) {
       <Container>
         <Grid>
           <div className={classes.paper}>
-            <Paper className={classes.paperContent} elevation={1} style={{backgroundColor:"rgba(248,244,255,0.5)"}}>
-              <Typography
-                variant="h5"
-                className={`${classes.userText} ${classes.userTextStyle}`}
-              >
-                User Details
-              </Typography>
+            <Paper
+              className={classes.paperContent}
+              elevation={1}
+              style={{ backgroundColor: "rgba(248,244,255,0.5)" }}
+            >
               <Grid item>
+                <Typography>
+                  <img
+                    src={process.env.PUBLIC_URL + "/Logo.png"}
+                    style={{
+                      width: "250px",
+                      height: "100px",
+                      marginTop: "-1.2rem",
+                    }}
+                    alt=""
+                  />
+                </Typography>
+                <Typography
+                  variant="h5"
+                  className={`${classes.userText} ${classes.userTextStyle}`}
+                >
+                  User Details
+                </Typography>
                 <Typography
                   variant="h3"
                   className={`${classes.userText} ${classes.roomCategory}`}
+                  style={{ fontSize: "30px" }}
                 >
                   {data.roomDetails.roomCategory}
                 </Typography>

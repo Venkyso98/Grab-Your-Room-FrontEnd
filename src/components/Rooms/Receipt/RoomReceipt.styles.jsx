@@ -9,6 +9,7 @@ export const useStyles = makeStyles((theme) => ({
   userTextStyle: {
     textDecoration: "underLine",
     textDecorationStyle: "dotted",
+    fontSize: "20px",
   },
   paper: {
     display: "flex",
@@ -18,6 +19,7 @@ export const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      // width:"60%"
     },
   },
   paperContent: {
@@ -31,7 +33,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   userDetails: {
     fontFamily: font,
-    fontSize: "2rem",
+    fontSize: "23px",
     marginBottom: "-0.2rem",
   },
   roomDetails: {
@@ -42,6 +44,6 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: font,
     textAlign: "center",
     marginTop: "2rem",
-    fontSize: "2rem",
+    fontSize: "20px",
   },
 }));
