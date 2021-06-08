@@ -42,7 +42,7 @@ function RoomDetails(props) {
       });
   };
 
-  // Room Details
+  // fetching Room Details
   useEffect(() => {
     axios
       .get(`http://localhost:5000/rooms/getSingleRoom/${getRoomId}`)
@@ -80,12 +80,16 @@ function RoomDetails(props) {
     props.history.push(`/rooms-listing?checkIn=${finalCheckInDate}`);
   };
 
+  console.log("RoomDetaisl:",roomDetails.length);
+
   return (
     <div>
       <Navbar />
       <Container>
         <div className={classes.roomDetailsBannerContainer}>
-          <div className={classes.roomDetailsBanner}>
+          <div className={classes.roomDetailsBannerImage}>
+            {roomDetails.roomImages &&  <img className={classes.roomDetailsBannerImage} src={roomDetails?.roomImages[0]} /> }           
+          </div>
             <div className={classes.backToRoomsDiv}>
               <Button
                 className={classes.backToRooms}
@@ -96,7 +100,7 @@ function RoomDetails(props) {
                 Back To Rooms
               </Button>
             </div>
-          </div>
+          {/* </div> */}
         </div>
 
         <Grid container>
