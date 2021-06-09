@@ -39,4 +39,9 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     fontFamily: "Play, sans-serif",
   },
+  noRooms:{
+    fontSize:"25px",
+    textAlign:"center",
+    marginLeft:"32rem",
+  }
 }));

@@ -7,11 +7,12 @@ import AllRooms from "./components/Rooms/AllRooms/AllRooms";
 import RoomDetails from "./components/Rooms/RoomDetails/RoomDetails";
 import RoomReceipt from "./components/Rooms/Receipt/RoomReceipt";
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div>
-      {/* <Demo /> */}
+      {/* <Navbar /> */}
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/search-room" component={SearchRoom} exact />

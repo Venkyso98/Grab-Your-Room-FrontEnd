@@ -20,40 +20,47 @@ function DisplayAllRoom({ displayFetchRooms }) {
         <Grid container className={classes.root} spacing={2}>
           <Grid item>
             <Grid container justify="center" spacing={2}>
-              {displayFetchRooms.map((fetchRooms) => (
-                <Grid item key={fetchRooms._id}>
-                  <Link
-                    to={`/room-details/${fetchRooms._id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Card className={classes.card}>
-                      <CardActionArea className={classes.cardColor}>
-                        <CardMedia
-                          component="img"
-                          height="180"
-                          image={fetchRooms.roomImages[2]}
-                          title="Rooms"
-                        ></CardMedia>
-                        <div className={classes.roomPrice}>
-                          <div className="hidden-button">
-                            ${fetchRooms.roomPrice}
+              {displayFetchRooms.length > 0 ? (
+                displayFetchRooms.map((fetchRooms) => (
+                  <Grid item key={fetchRooms._id}>
+                    <Link
+                      to={`/room-details/${fetchRooms._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Card className={classes.card}>
+                        <CardActionArea className={classes.cardColor}>
+                          <CardMedia
+                            component="img"
+                            height="180"
+                            image={fetchRooms.roomImages[2]}
+                            title="Rooms"
+                          ></CardMedia>
+                          <div className={classes.roomPrice}>
+                            <div className="hidden-button">
+                              ${fetchRooms.roomPrice}
+                            </div>
                           </div>
-                        </div>
-                        <CardContent className="roomName">
-                          <Typography
-                            gutterBottom
-                            variant="h5"
-                            component="h2"
-                            className={classes.roomCategory}
-                          >
-                            {fetchRooms.roomCategory}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </Link>
-                </Grid>
-              ))}
+                          <CardContent className="roomName">
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              className={classes.roomCategory}
+                            >
+                              {fetchRooms.roomCategory}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Link>
+                  </Grid>
+                ))
+              ) : (
+                <div className={classes.noRooms}>
+                  <p>¯\_(ツ)_/¯ </p>
+                  <p>No Rooms Avaliable</p>
+                </div>
+              )}
             </Grid>
           </Grid>
         </Grid>
