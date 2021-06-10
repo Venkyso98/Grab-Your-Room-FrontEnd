@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Button from "@material-ui/core/Button";
 import { useStyles } from "./SearchRoom.style";
@@ -8,21 +8,28 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { Box, Grid, Paper, Typography } from "@material-ui/core";
 import { getSingleUserData } from "../../Services/useAxios";
+import DataPersistContext from "../../Context/StateContext";
 
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  checkIn: new Date(),
-  checkOut: new Date(),
-};
+// const initialValues = {
+//   firstName: "",
+//   lastName: "",
+//   email: "",
+//   checkIn: new Date(),
+//   checkOut: new Date(),
+// };
 
 function SearchRoom(props) {
   const classes = useStyles();
-  const [response, setResponse] = useState(initialValues);
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
+
+  // Using Context Api way
+  const { usersDataValue, usersEmail } = React.useContext(DataPersistContext);
+  const [response, setResponse] = usersDataValue;
+  const [email, setEmail] = usersEmail;
+
   const getDataofUser = JSON.parse(localStorage.getItem("userId"));
 
+  // console.log("context:", context);
   // for fetching the user on every render i.e to persists the user data on form
   useEffect(() => {
     (async () => {
@@ -34,7 +41,7 @@ function SearchRoom(props) {
       } catch (error) {
         console.log("Error:", error);
       }
-    })();
+    })()
   }, []);
 
   // Input Change
@@ -106,7 +113,7 @@ function SearchRoom(props) {
 
   return (
     <React.Fragment>
-      {/* <Navbar /> Centralised Navbar */}
+      <Navbar /> {/* Centralised Navbar */}
       <Grid>
         <div className={classes.searchBackground}>
           <Paper elevation={3} className={classes.paperContent}>

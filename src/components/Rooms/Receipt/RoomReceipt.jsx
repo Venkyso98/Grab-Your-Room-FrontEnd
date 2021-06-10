@@ -1,5 +1,6 @@
 import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import React from "react";
+import DataPersistContext from "../../../Context/StateContext";
 import Navbar from "../../Navbar/Navbar";
 import { useStyles } from "./RoomReceipt.styles";
 
@@ -8,14 +9,21 @@ function RoomReceipt(props) {
   const classes = useStyles();
   const data = props.location.state;
 
+  // Context Api way
+  const { usersDataValue } = React.useContext(DataPersistContext);
+  const [userValues, setUserValues] = usersDataValue;
+
+
+  console.log("UsersValuw:",userValues);
+
   const parseDateToString = (date) => {
     const parsedDate =
       date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     return parsedDate;
   };
 
-  let parseCheckInDateFormat = new Date(data.user.checkIn);
-  let parseCheckOutDateFormat = new Date(data.user.checkOut);
+  let parseCheckInDateFormat = new Date(userValues.checkIn);
+  let parseCheckOutDateFormat = new Date(userValues.checkOut);
 
   const checkInDate = parseDateToString(parseCheckInDateFormat);
   const checkOutDate = parseDateToString(parseCheckOutDateFormat);
@@ -60,7 +68,8 @@ function RoomReceipt(props) {
 
                 <Container>
                   <p className={classes.userDetails}>
-                    {data.user.firstName} {data.user.lastName}
+                    {/* {data.user.firstName} {data.user.lastName} */}
+                    {userValues.firstName} {userValues.lastName}
                   </p>
                   <p className={classes.roomDetails}>
                     <b>Room Size: </b>
