@@ -16,6 +16,7 @@ function DatePickerControl({ label, name, onChange, value }) {
     },
   });
 
+  const today = new Date();
   return (
     <div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -32,6 +33,7 @@ function DatePickerControl({ label, name, onChange, value }) {
             "aria-label": "change date",
           }}
           className={classes.datePicker}
+          minDate={today.setDate(today.getDate())}
         />
       </MuiPickersUtilsProvider>
     </div>
