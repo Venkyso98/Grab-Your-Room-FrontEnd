@@ -26,6 +26,7 @@ function SearchRoom(props) {
   const { usersDataValue, usersEmail } = React.useContext(DataPersistContext);
   const [response, setResponse] = usersDataValue;
   const [email, setEmail] = usersEmail;
+  const [errors, setErrors] = useState({});
 
   const getDataofUser = JSON.parse(localStorage.getItem("userId"));
 
@@ -41,8 +42,41 @@ function SearchRoom(props) {
       } catch (error) {
         console.log("Error:", error);
       }
-    })()
+    })();
   }, []);
+
+  // Validations
+  const validate = (fieldValues = response) => {
+    console.log("Inputs Resposnse:", response);
+    // const errors = {};
+
+    let validation = { ...errors }; // specifies that to exists all other error messages if we type in another input
+
+    if ("firstName" in fieldValues) {
+      validation.firstName = fieldValues.firstName
+        ? ""
+        : "This field is required";
+    }
+    if ("lastName" in fieldValues) {
+      validation.lastName = fieldValues.lastName
+        ? ""
+        : "This field is required";
+    }
+    if ("email" in fieldValues) {
+      validation.email = /^\S+@\S+\.\S+$/.test(fieldValues.email)
+        ? ""
+        : "Email is not valid";
+    }
+
+    setErrors({
+      ...validation,
+    });
+
+    const returendValue = Object.values(validation).every(
+      (vali) => vali === ""
+    ); // returns either true or false
+    return returendValue;
+  };
 
   // Input Change
   const handleInputChange = (event) => {
@@ -51,12 +85,15 @@ function SearchRoom(props) {
       ...inputs,
       [name]: value,
     }));
+
+    // validating the form
+    validate({ [name]: value });
   };
 
   // Submit function
   const handleSubmit = (event) => {
     event.preventDefault();
-    // props.onClickData(response.checkIn, response.checkOut);
+
     let parseIntoDateFormat = new Date(response.checkIn);
     let finalCheckInDate =
       parseIntoDateFormat.getFullYear() +
@@ -74,38 +111,43 @@ function SearchRoom(props) {
     };
 
     const pushCheckInData = () => {
-      props.history.push(`/rooms-listing?checkIn=${finalCheckInDate}`);
+      if (response.firstName && response.lastName && response.email) {
+        props.history.push(`/rooms-listing?checkIn=${finalCheckInDate}`);
+      }
     };
 
-    // user put request i.e if user already exists
-    if (response.email == email) {
-      console.log("In put request");
-      axios
-        .put(
-          `http://localhost:5000/user/updateUserDetails/${getDataofUser}`,
-          userDetails
-        )
-        .then((response) => {
-          console.log("User updated details", response.data);
-          pushCheckInData();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      // user post
-      axios
-        .post("http://localhost:5000/user/registeruser", userDetails)
-        .then((response) => {
-          console.log("Response Post:", response);
-          localStorage.setItem("userId", JSON.stringify(response.data._id));
-        })
-        .catch((error) => {
-          console.log("Error:", error);
-        });
+    // Validating the form
+    if (validate()) {
+      // user put request i.e if user already exists
+      if (response.email == email) {
+        console.log("In put request");
+        axios
+          .put(
+            `http://localhost:5000/user/updateUserDetails/${getDataofUser}`,
+            userDetails
+          )
+          .then((response) => {
+            console.log("User updated details", response.data);
+            pushCheckInData();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        // user post
+        axios
+          .post("http://localhost:5000/user/registeruser", userDetails)
+          .then((response) => {
+            console.log("Response Post:", response);
+            localStorage.setItem("userId", JSON.stringify(response.data._id));
+          })
+          .catch((error) => {
+            console.log("Error:", error);
+          });
 
-      // send the checkIn date to other page as queryString
-      pushCheckInData();
+        // send the checkIn date to other page as queryString
+        pushCheckInData();
+      }
     }
   };
 
@@ -128,6 +170,7 @@ function SearchRoom(props) {
                 name="firstName"
                 onChange={handleInputChange}
                 value={response.firstName}
+                error={errors.firstName}
               />
               <InputControl
                 label="Last Name"
@@ -136,6 +179,7 @@ function SearchRoom(props) {
                 name="lastName"
                 onChange={handleInputChange}
                 value={response.lastName}
+                error={errors.lastName}
               />
               <InputControl
                 label="Email"
@@ -144,6 +188,7 @@ function SearchRoom(props) {
                 name="email"
                 onChange={handleInputChange}
                 value={response.email}
+                error={errors.email}
               />
               <DatePickerControl
                 name="checkIn"
