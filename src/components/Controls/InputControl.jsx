@@ -2,7 +2,15 @@ import { TextField } from "@material-ui/core";
 import React from "react";
 import { useStyles } from "./InputControl.style";
 
-function InputControl({ id, label, variant, name, onChange, value }) {
+function InputControl({
+  id,
+  label,
+  variant,
+  name,
+  onChange,
+  value,
+  error = null,
+}) {
   const classes = useStyles();
   return (
     <div>
@@ -14,6 +22,7 @@ function InputControl({ id, label, variant, name, onChange, value }) {
         value={value}
         onChange={onChange}
         className={classes.inputTextField}
+        {...(error && { error: true, helperText: error })}
       />
     </div>
   );
