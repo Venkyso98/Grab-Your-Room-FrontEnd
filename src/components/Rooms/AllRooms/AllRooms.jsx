@@ -13,6 +13,7 @@ function AllRooms(props) {
   const [response, setResponse] = useState([]);
   const classes = useStyles();
 
+  // fetches all the rooms from DB
   useEffect(() => {
     axios
       .get(`http://localhost:5000/rooms/getAllRooms/${queryStringValue}`)

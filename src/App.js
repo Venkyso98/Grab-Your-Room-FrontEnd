@@ -26,18 +26,18 @@ function App() {
   const getDataofUser = JSON.parse(localStorage.getItem("userId"));
 
   // In case of global Refresh i.e browser refresh
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getSingleUserData(getDataofUser);
-        console.log("Response Get in App js:", response);
-        setUsersData(response.data);
-        // setEmail(response.data.email);
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await getSingleUserData(getDataofUser);
+  //       console.log("Response Get in App js:", response);
+  //       setUsersData(response.data);
+  //       // setEmail(response.data.email);
+  //     } catch (error) {
+  //       console.log("Error:", error);
+  //     }
+  //   })();
+  // }, []);
 
   console.log("In App js");
 
