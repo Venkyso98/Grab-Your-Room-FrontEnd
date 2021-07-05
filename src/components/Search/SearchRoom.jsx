@@ -106,7 +106,7 @@ function SearchRoom(props) {
 
   return (
     <React.Fragment>
-      {/* <Navbar /> Centralised Navbar */}
+      <Navbar />
       <Grid>
         <div className={classes.searchBackground}>
           <Paper elevation={3} className={classes.paperContent}>
